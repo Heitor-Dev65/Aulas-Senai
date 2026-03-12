@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+
+int numeros  [10];
+int numero2 [10];
+double numero  ;
+int calculo ;
+
+void menu() {
+    cout<<"1 - Add numero no vetor"<<endl;
+    cout<<"2 - Exibir numeros"<<endl;
+    cout<<"3 - Exibir Soma total dos numeros"<<endl;
+    cout<<"4 - Exibir a media dos numeros"<<endl;
+    cout<<"5 - Exibir o maior numero"<<endl;
+    cout<<"6 - Exibir menor numero"<<endl;
+    cout<<"7 - Exibir os numeros pares"<<endl;
+    cout<<"8 - Sair"<<endl;
+}
+
+void addNumero() {
+    for (int i = 0; i < 2; i++) {
+            cout<<"Informe um numero ao vetor"<<endl;
+            cin>>numeros[i];
+    }
+}
+
+void exibirNumeros() {
+    for (int i = 0; i < 2; i++) {
+        cout<<"Numeros adicionados: "<<numeros[i]<<endl;
+
+    }
+}
+
+void somaNumeros() {
+    for (int i = 0; i < 2; i++) {
+        calculo = numeros[i] + numeros[i];
+        cout<<"Soma dos numeros add"<<calculo<<endl;
+    }
+}
+
+void mediaNum() {
+
+    int  mediaNumm;
+    cout<<"Exibir a media"<<endl;
+    for (int i = 0; i < 2; i++){
+        if (numeros[i] > 0) {
+        mediaNumm = numeros[i] / 2;
+            cout<<"media: "<<mediaNumm<<endl;
+
+        }
+    }
+}
+
+
+void maiorNum() {
+    for (int i = 0; i < 2; i++) {
+        if (numeros[i] > numero) {
+            cout<<"O maior numero e: "<<numeros[i]<<endl;
+        }
+    }
+}
+
+
+void menorNum() {
+    for (int i = 0; i < 2; i++) {
+        if (numeros[i] < numero) {
+            cout<<"O menor numero e: "<<numeros[i]<<endl;
+        }
+    }
+}
+
+void numPares() {
+    for (int i = 0; i < 2; i++){
+    if (numeros[i] / 2) {
+        cout<<"Numeros pares: "<<numeros[i]<<endl;
+        }
+    }
+}
+
+int main() {
+    int op = 0;
+
+    do {
+        menu();
+        cin>>op;
+
+        switch (op) {
+            case 1:
+                addNumero();
+                break;
+            case 2:
+                exibirNumeros();
+                break;
+            case 3:
+                somaNumeros();
+                break;
+            case 4:
+                mediaNum();
+                break;
+            case 5:
+                maiorNum();
+                break;
+            case 6:
+                menorNum();
+                break;
+            case 7:
+                numPares();
+                break;
+            default:
+                cout<<"Programa encerrado"<<endl;
+                break;
+
+        }
+    }while (op != 8);
+}
