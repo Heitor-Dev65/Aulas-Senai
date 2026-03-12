@@ -1,0 +1,175 @@
+#include <iostream>
+using namespace std;
+
+string nomeLivro [10];
+int calculo ;
+string livroEmprestimo [10];
+
+
+struct livro {
+    float ISBN;
+    string titulo;
+    string status;
+    int estoque;
+};
+
+livro Livro [10];
+
+
+struct aluno {
+    float matricula;
+    string nome;
+    float telefone;
+};
+
+aluno Aluno [10];
+
+struct emprestimo {
+    float id;
+    float matriculaAluno;
+    float ISBN;
+    string dataSaida;
+    string data_devolucao;
+};
+
+emprestimo Emprestimo [10];
+
+void menu() {
+    cout<<"1 - Cadastros"<<endl;
+    cout<<"2 - Registrar emprestimo"<<endl;
+    cout<<"3 - Registrar devolucao de emprestimo"<<endl;
+    cout<<"4 - Relatorios"<<endl; //listar emprestimos nao devolvidos
+    cout<<"5 - Sair"<<endl;
+}
+
+void menuCadastro() {
+    cout<<"1 - Cadastrar Livros"<<endl;
+    cout<<"2 - Cadastrar Alunos"<<endl;
+    cout<<"3 - voltar ao menu principal"<<endl;
+}
+
+void cadastrarLivros() {
+    for (int i = 0; i < 2; i++) {
+      if (Livro[i].ISBN == 0) {
+          cout<<"informe o titulo do livro"<<endl;
+          cin.ignore();
+          getline(cin, Livro[i].titulo);
+          cout<<"Digite o ISBN do livro"<<endl;
+          cin>> Livro[i].ISBN;
+          cout<<"Digite a quantidade no estoque"<<endl;
+          cin>>Livro[i].estoque;
+
+          Livro[i].titulo == nomeLivro[i];
+        }
+    }
+}
+
+void cadastrarAlunos() {
+
+    for (int i = 0; i < 2; i++) {
+        if (Aluno[i].matricula == 0) {
+            cout<<"Digite o numero da matricula"<<endl;
+            cin>>Aluno[i].matricula;
+
+            cout<<"Digite o nome do aluno"<<endl;
+            cin.ignore();
+            getline(cin,Aluno[i].nome);
+
+        }
+    }
+}
+
+void registrarEmprestimo() {
+    int quantidadeEmprestimo;
+    string livroEmprestimo;
+
+    for (int i = 0; i < 2; i++) {
+        cout<<"Informe o livro que deseja"<<endl;
+        cin>>livroEmprestimo;
+        if (livroEmprestimo == nomeLivro[i] ) {
+
+            cout<<"Digite o ID da matricula"<<endl;
+            cin>>Emprestimo[i].id;
+
+            cout<<"Digite a matricula do aluno"<<endl;
+            cin>>Emprestimo[i].matriculaAluno;
+
+            cout<<"Digite a ISBN"<<endl;
+            cin>>Emprestimo[i].ISBN;
+
+            cout<<"Informe a data de saida"<<endl;
+            cin.ignore();
+            getline(cin,Emprestimo[i].dataSaida);
+
+            cout<<"Informe a data de saida"<<endl;
+            cin.ignore();
+            getline(cin,Emprestimo[i].data_devolucao);
+
+            cout<<"Digite quantos deseja pegar"<<endl;
+            cin>>quantidadeEmprestimo;
+            calculo = quantidadeEmprestimo - Livro[i].estoque;
+            cin>>calculo;
+        }
+    }
+}
+
+void registrarDevolucao() {
+
+int quantidadeDevolucao;
+    string livroDevolucao;
+
+    for (int i = 0; i < 2; i++) {
+        cout<<"Digite o nome do livro"<<endl;
+        cin>>livroDevolucao;
+
+        if (livroDevolucao == Livro[i].titulo ) {
+            cout<<"Livro devolvido com sucesso! "<<endl;
+            calculo = quantidadeDevolucao - Livro[i].estoque;
+            cin>>calculo;
+        }
+    }
+}
+
+void relatorio() {
+
+}
+
+
+int main() {
+    int op;
+    int op2;
+do {
+    menu();
+    cin>>op;
+    switch (op) {
+        case 1:
+            do {
+            menuCadastro();
+            cin>>op2;
+
+               switch (op2) {
+                   case 1:
+                       cadastrarLivros();
+                       break;
+                   case 2:
+                       cadastrarAlunos();
+                       default:
+                       cout<<"Voltando ao menu principal"<<endl;
+               }
+            }while (op2 != 3);
+        case 2:
+            registrarEmprestimo();
+            break;
+        case 3:
+            registrarDevolucao();
+            break;
+
+        case 4:
+            relatorio();
+            break;
+
+        default:
+            cout<<"Saindo do sistema"<<endl;
+        }
+    }while (op != 5);
+}
